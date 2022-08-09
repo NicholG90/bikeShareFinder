@@ -23,10 +23,10 @@ function SavedStations() {
 
     const handleClick = (key, e) => {
         e.preventDefault();
-        listingInformation(key)
-        setIsClicked(true)
+        // listingInformation(key)
+        // setIsClicked(true)
     }
-    
+
     const handleRemove = (stationId) => {
         const database = getDatabase(firebase)
         const dbRef = ref(database, `/${stationId}`)
