@@ -2,7 +2,7 @@
 // import MapResults from './MapResults';
 import SaveStation from "./SaveStation";
 
-function DisplayData ({ data } ) {
+function DisplayData({ userStation, stationInformation  } ) {
 
     // const [userLat, setUserLat] = useState();
     // const [userLong, setUserLong] = useState();
@@ -19,11 +19,11 @@ function DisplayData ({ data } ) {
 
     return(
         <div>
-            <p>{data.name}</p>
-            <p>Bikes free: {data.free_bikes}</p>
-            <p>Empty Slots: {data.empty_slots}</p>
+            <p>{userStation.name}</p>
+            <p>Bikes free: {userStation.free_bikes}</p>
+            <p>Empty Slots: {userStation.empty_slots}</p>
             {/* <MapResults /> */}
-            <SaveStation data={data} />
+            <SaveStation userStation={userStation} stationInformation={stationInformation} />
         </div>
 
     )

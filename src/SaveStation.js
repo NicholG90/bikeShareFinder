@@ -3,13 +3,13 @@ import { getDatabase, ref, update } from 'firebase/database';
 
 
 
-function SaveStation({ data }) {
+function SaveStation({ userStation, stationInformation }) {
 
     const handleClick = (e) => {
         e.preventDefault();
         const database = getDatabase(firebase);
         const dbRef = ref(database);
-        update(dbRef, {[data.id]: data.name});
+        update(dbRef, { [userStation.id]: {id: userStation.id, name: userStation.name, url: stationInformation.href} });
 
     }
 

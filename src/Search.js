@@ -54,7 +54,7 @@ function Search() {
         <div>
             {regions ? <RegionSelect data={regions} regionSelect={regionSelect} /> : <h2>Loading</h2>}
             {stationInformation ? <StationSelect data={stationInformation} stationSelect={stationSelect} /> : null}
-            {userStation ? <DisplayData data={userStation} /> : null}
+            {userStation ? <DisplayData userStation={userStation} stationInformation={stationInformation} /> : null}
         </div>
     );
 }
