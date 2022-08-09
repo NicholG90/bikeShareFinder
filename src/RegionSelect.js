@@ -1,17 +1,21 @@
+import Select from 'react-select'
+
 function RegionSelect({ data, regionSelect } ) {
     
 
     const regionData = data;
-    const regionNames = regionData.map((network, index) => <option key={index} value={network.id}>{network.name}</option>);
+    const regionNames = regionData.map((network, index) => ({ value:`${network.id}`, label:`${network.name}` }));
 
-    const handleSelect = (e) => {
-        regionSelect(e)
+
+
+    const handleSelect = (selected) => {
+        regionSelect(selected.value)
     }
 
     return(
         <div>
             <label>Choose a Region:</label>
-            <select onChange={handleSelect}>{regionNames}</select>
+            <Select onChange={handleSelect} options={regionNames} />
         </div>
 
     )

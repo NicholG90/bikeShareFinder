@@ -1,16 +1,18 @@
+import Select from 'react-select'
+
 function StationSelect({ data, stationSelect } ) {
 
     const stationData = data.stations;
-    const stationNames = stationData.map((station) => <option key={station.id} value={station.id}>{station.name}</option>);
+    const stationNames = stationData.map((station) => ({ value: `${station.id}`, label: `${station.name}` }) );
 
-    const handleSelect = (e) => {
-        stationSelect(e)
+    const handleSelect = (selected) => {
+        stationSelect(selected.value)
     }
 
     return(
         <div>
             <label>Choose a Station:</label>
-            <select onChange={handleSelect}>{stationNames}</select>
+            <Select onChange={handleSelect} options={stationNames} />
         </div>
 
     )
