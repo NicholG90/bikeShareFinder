@@ -7,7 +7,6 @@ import axios from 'axios';
 
 function SavedStations() {
     const [savedStations, setSavedStations] = useState([]);
-    const [isClicked, setIsClicked] = useState(false)
     const [userStation, setUserStation] = useState();
 
 
