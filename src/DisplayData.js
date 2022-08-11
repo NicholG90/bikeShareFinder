@@ -1,28 +1,33 @@
-// import { useState } from 'react';
-// import MapResults from './MapResults';
+import { useState } from 'react';
+import Map from './Map';
 import SaveStation from "./SaveStation";
 
-function DisplayData({ userStation, stationInformation  } ) {
+function DisplayData({ userStation, stationInformation }) {
 
-    // const [userLat, setUserLat] = useState();
-    // const [userLong, setUserLong] = useState();
+    const [userLat, setUserLat] = useState();
+    const [userLong, setUserLong] = useState();
 
-    // navigator.geolocation.getCurrentPosition(function (position) {
-    //     setUserLat(position.coords.latitude)
-    //     setUserLong(position.coords.longitude)
-    // });
-    
-    // const searchURL = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyAH19ev_ngsYqyJefsiPU_zBEeepelnaIY
-    // &origin=${userLat},${userLong}&destination=${data.latitude},${data.longitude}`
+    navigator.geolocation.getCurrentPosition(function (position) {
+        setUserLat(position.coords.latitude)
+        setUserLong(position.coords.longitude)
+    });
 
+    const searchURL = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyAH19ev_ngsYqyJefsiPU_zBEeepelnaIY
+    &origin=${userLat},${userLong}&destination=${userStation.latitude},${userStation.longitude}`
 
+    const geolocation = {
+        userLat: userLat,
+        userLong: userLong,
+        stationLat: userStation.latitude,
+        stationLong: userStation.longitude
+    }
 
-    return(
+    return (
         <div>
             <p>{userStation.name}</p>
             <p>Bikes free: {userStation.free_bikes}</p>
             <p>Empty Slots: {userStation.empty_slots}</p>
-            {/* <MapResults /> */}
+            {userLong ? <Map geolocation={geolocation} /> : null}
             <SaveStation userStation={userStation} stationInformation={stationInformation} />
         </div>
 

@@ -1,0 +1,14 @@
+{
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.useInlineCompletions": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.fontFamily": "'Anonymous Pro', 'Courier New', monospace",
+    "gitlens.plusFeatures.enabled": false,
+    "gitlens.currentLine.enabled": false
+}
