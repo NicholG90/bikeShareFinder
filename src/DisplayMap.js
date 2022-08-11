@@ -1,4 +1,6 @@
 
+// requires update for MarkerClusterer to work. Need to decide between clusterer and region select https://github.com/JustFly1984/react-google-maps-api/issues/3064
+
 import { useJsApiLoader, GoogleMap, MarkerClusterer, MarkerF, InfoWindow } from '@react-google-maps/api'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
