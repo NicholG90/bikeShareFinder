@@ -12,9 +12,6 @@ function DisplayData({ userStation, stationInformation }) {
         setUserLong(position.coords.longitude)
     });
 
-    const searchURL = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyAH19ev_ngsYqyJefsiPU_zBEeepelnaIY
-    &origin=${userLat},${userLong}&destination=${userStation.latitude},${userStation.longitude}`
-
     const geolocation = {
         userLat: userLat,
         userLong: userLong,
