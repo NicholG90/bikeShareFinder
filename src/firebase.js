@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyAH19ev_ngsYqyJefsiPU_zBEeepelnaIY",
+  apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
   authDomain: "bikesharefinder-73c4d.firebaseapp.com",
   databaseURL: "https://bikesharefinder-73c4d-default-rtdb.firebaseio.com",
   projectId: "bikesharefinder-73c4d",

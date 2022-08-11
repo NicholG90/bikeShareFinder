@@ -7,7 +7,7 @@ const libraries = ['places'];
 
 function Map({ geolocation }) {
     const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: "AIzaSyAH19ev_ngsYqyJefsiPU_zBEeepelnaIY",
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
         libraries: libraries,
     })
     // eslint-disable-next-line no-unused-vars
