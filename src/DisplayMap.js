@@ -1,8 +1,8 @@
 
-import { useJsApiLoader, GoogleMap, MarkerClusterer, Marker, InfoWindow } from '@react-google-maps/api'
+import { useJsApiLoader, GoogleMap, MarkerClusterer, MarkerF, InfoWindow } from '@react-google-maps/api'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-
+import RegionSelect from './RegionSelect';
 
 function DisplayMap() {
     const { isLoaded } = useJsApiLoader({
@@ -11,18 +11,38 @@ function DisplayMap() {
 
     const [stationGeo, setStationGeo] = useState()
     const [activeMarker, setActiveMarker] = useState(null);
-
+    const [regions, setRegions] = useState();
+    const [userRegion, setUserRegion] = useState();
 
     useEffect(() => {
         axios({
-            url: "https://api.citybik.es//v2/networks/bixi-toronto",
+            url: "https://api.citybik.es/v2/networks/",
             method: "GET",
         }).then((response) => {
-            const stationData = response.data.network.stations
-            const mappedData = stationData.map((station) => ({ position: { lat: station.latitude, lng: station.longitude }, freeBikes: `${station.free_bikes}`, emptySlots: `${station.empty_slots}`, stationName: `${station.name}`, }))
-            setStationGeo(mappedData);
+            setRegions(response.data.networks);
         });
     }, []);
+
+    const regionSelect = (selected) => {
+        const regionID = selected
+        const regionsCopy = [...regions]
+        const userSelectedRegion = regionsCopy.find(selectedRegion => selectedRegion.id === regionID);
+        setUserRegion(userSelectedRegion)
+    }
+
+
+
+    useEffect(() => {
+        if (userRegion)
+            axios({
+                url: `https://api.citybik.es/${userRegion.href}`,
+                method: "GET",
+            }).then((response) => {
+                const stationData = response.data.network.stations
+                const mappedData = stationData.map((station) => ({ position: { lat: station.latitude, lng: station.longitude }, freeBikes: `${station.free_bikes}`, emptySlots: `${station.empty_slots}`, stationName: `${station.name}`, }))
+                setStationGeo(mappedData);
+            });
+    }, [userRegion]);
 
     const markerClick = (marker) => {
         if (marker === activeMarker) {
@@ -37,53 +57,58 @@ function DisplayMap() {
         map.fitBounds(bounds);
     };
 
-    return isLoaded && stationGeo ? (
-        <div className='displayMapContainer'>
-            <GoogleMap
-                zoom={10}
-                mapContainerStyle={{ width: '100%', height: '100%' }}
-                // center={center}
-                options={{
-                    zoomControl: true,
-                    streetViewControl: false,
-                    mapTypeControl: true,
-                    fullscreenControl: true,
-                }}
-                onLoad={handleOnLoad}
-                onClick={() => setActiveMarker(null)}
-            >
-                <MarkerClusterer minimumClusterSize={5}>
-                    {(clusterer) =>
-                        stationGeo.map(({ position, stationName, emptySlots, freeBikes }) => (
-                            <>
-                                <Marker
-                                    // key={`marker-${position.lng}`}
-                                    position={position}
-                                    clusterer={clusterer}
-                                    clickable
-                                    onClick={() => markerClick(`marker-${position.lng}`)}
-                                >
-                                    {activeMarker === `marker-${position.lng}` ? (<InfoWindow
-                                        key={`infowindow-${position.lat}`}
-                                        onCloseClick={() => setActiveMarker(null)}
-                                    >
-                                        <div>
-                                            <p>Station Name: {stationName}</p>
-                                            <p>Free Bikes: {freeBikes}</p>
-                                            <p>Empty Slots: {emptySlots}</p>
-                                        </div>
-                                    </InfoWindow>) : null}
-                                </Marker>
+    return (
+        <>
+            <div>
+                {regions ? <RegionSelect data={regions} regionSelect={regionSelect} /> : <h2>Loading</h2>}
+            </div>
+            {isLoaded && stationGeo && userRegion ? (
+                <div className='displayMapContainer'>
+                    <GoogleMap
+                        zoom={10}
+                        mapContainerStyle={{ width: '100%', height: '100%' }}
+                        options={{
+                            zoomControl: true,
+                            streetViewControl: false,
+                            mapTypeControl: true,
+                            fullscreenControl: true,
+                        }}
+                        onLoad={handleOnLoad}
+                        onClick={() => setActiveMarker(null)}
+                    >
+                        <MarkerClusterer minimumClusterSize={5}>
+                            {(clusterer) =>
+                                stationGeo.map(({ position, stationName, emptySlots, freeBikes }) => (
+                                    <>
+                                        <MarkerF
+                                            key={`marker-${position.lng}`}
+                                            position={position}
+                                            clusterer={clusterer}
+                                            clickable
+                                            onClick={() => markerClick(`marker-${position.lng}`)}
+                                        >
+                                            {activeMarker === `marker-${position.lng}` ? (<InfoWindow
+                                                key={`infowindow-${position.lat}`}
+                                                onCloseClick={() => setActiveMarker(null)}
+                                            >
+                                                <div>
+                                                    <p>Station Name: {stationName}</p>
+                                                    <p>Free Bikes: {freeBikes}</p>
+                                                    <p>Empty Slots: {emptySlots}</p>
+                                                </div>
+                                            </InfoWindow>) : null}
+                                        </MarkerF>
 
-                            </>
+                                    </>
 
-                        ))
-                    }
-                </MarkerClusterer>
+                                ))
+                            }
+                        </MarkerClusterer>
 
-            </GoogleMap>
-        </div>
-    ) : <></>
+                    </GoogleMap>
+                </div>) : <></>}
+        </>
+    )
 
 }
 
