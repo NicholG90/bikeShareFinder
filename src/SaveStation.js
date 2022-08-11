@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 
 
 function SaveStation({ userStation, stationInformation }) {
+    const [savedStations, setSavedStations] = useState(null)
     const [savedExists, setSavedExists] = useState(false);
 
     useEffect(() => {
@@ -18,16 +19,26 @@ function SaveStation({ userStation, stationInformation }) {
             for (let key in data) {
                 newState.push(key)
             }
-            checkStates(newState)
+            setSavedStations(newState)
         })
 
     }, [])
 
-    const checkStates = (newState) => {
-        if (newState.includes(userStation.id)) {
-            setSavedExists(true)
+    useEffect(() => {
+        const checkStates = () => {
+            if (savedStations.includes(userStation.id)) {
+                setSavedExists(true)
+            }
         }
-    }
+
+        if (savedStations === null) {
+            return
+        }
+        checkStates()
+
+    }, [savedStations, userStation.id])
+
+
 
     const handleClick = (e) => {
         e.preventDefault();
