@@ -2,13 +2,13 @@ import { Link, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import SavedStations from './SavedStations';
 import Search from './Search';
-import Map from "./Map"
+import DisplayMap from "./DisplayMap"
 
 function Navigation() {
     return (
-        <div>
-            <nav>
-                <ul>
+        <div className='wrapper'>
+            <nav className='headerNav'>
+                <ul className='headerNavList'>
                     <li>
                         <Link to="/">Home</Link>
                     </li>
@@ -27,7 +27,7 @@ function Navigation() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/search" element={<Search />} />
-                <Route path="/map" element={<Map />} />
+                <Route path="/map" element={<DisplayMap />} />
                 <Route path="/saved" element={<SavedStations />} />
             </Routes>
         </div>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Map from './Map';
+import MapResult from './MapResult';
 import SaveStation from "./SaveStation";
 
 function DisplayData({ userStation, stationInformation }) {
@@ -24,8 +24,8 @@ function DisplayData({ userStation, stationInformation }) {
             <p>{userStation.name}</p>
             <p>Bikes free: {userStation.free_bikes}</p>
             <p>Empty Slots: {userStation.empty_slots}</p>
-            {userLong ? <Map geolocation={geolocation} /> : null}
             <SaveStation userStation={userStation} stationInformation={stationInformation} />
+            {geolocation ? <MapResult geolocation={geolocation} /> : null}
         </div>
 
     )

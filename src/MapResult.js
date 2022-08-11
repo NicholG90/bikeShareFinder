@@ -2,24 +2,25 @@
 import { useJsApiLoader, GoogleMap, DirectionsRenderer } from '@react-google-maps/api'
 import { useState, useEffect } from 'react'
 
-const libraries = ['places'];
 
+function MapResult({ geolocation }) {
 
-function Map({ geolocation }) {
     const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-        libraries: libraries,
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY
     })
+
     // eslint-disable-next-line no-unused-vars
     const [map, setMap] = useState(null)
     const [directionsResponse, setDirectionsResponse] = useState(null)
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
 
+    const center = { lat: geolocation.stationLat, lng: geolocation.stationLong }
+
 
     useEffect(() => {
 
-        if (isLoaded && geolocation) {
+        if (isLoaded && geolocation.userLong) {
             calculateRoute();
         }
         async function calculateRoute() {
@@ -34,7 +35,9 @@ function Map({ geolocation }) {
             setDistance(results.routes[0].legs[0].distance.text)
             setDuration(results.routes[0].legs[0].duration.text)
         }
+
     }, [isLoaded, geolocation])
+
 
     return isLoaded ? (
         <>
@@ -48,22 +51,20 @@ function Map({ geolocation }) {
                     fullscreenControl: true,
                 }}
                 onLoad={map => setMap(map)}
+                center={center}
             >
                 {directionsResponse && (
                     <DirectionsRenderer directions={directionsResponse} />
                 )}
             </GoogleMap>
-            {/* <button type='submit' onClick={calculateRoute}>
-                Calculate Route
-            </button> */}
-            <p>Waling Time: {duration}</p>
-            <p>Distance: {distance}</p>
+            {directionsResponse && (<p>Walking Time: {duration}</p>)}
+            {directionsResponse && (<p>Distance: {distance}</p>)}
         </>
     ) : <></>
 
 
 }
 
-export default Map
+export default MapResult
 
 // Some assitance with Google API and Directions from https://www.youtube.com/watch?v=iP3DnhCUIsE
