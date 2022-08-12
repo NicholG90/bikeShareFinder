@@ -43,7 +43,7 @@ function MapResult({ geolocation }) {
         <>
             <GoogleMap
                 zoom={10}
-                mapContainerStyle={{ width: '500px', height: '500px' }}
+                mapContainerStyle={{ width: '50%', height: '50%' }}
                 options={{
                     zoomControl: true,
                     streetViewControl: false,

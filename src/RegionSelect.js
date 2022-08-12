@@ -10,9 +10,9 @@ function RegionSelect({ data, regionSelect }) {
     }
 
     return (
-        <div>
+        <div className='selectSection'>
             <label>Choose a Region:</label>
-            <Select onChange={handleSelect} options={regionNames} />
+            <Select onChange={handleSelect} options={regionNames} className="select" />
         </div>
 
     )

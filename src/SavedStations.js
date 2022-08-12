@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { getDatabase, ref, onValue, remove } from 'firebase/database';
+import { getDatabase, ref, onValue } from 'firebase/database';
 import firebase from './firebase';
 import DisplayData from "./DisplayData";
 import axios from 'axios';
+import Select from 'react-select'
+
 
 
 function SavedStations() {
@@ -26,44 +28,24 @@ function SavedStations() {
 
     }, [])
 
-    const handleClick = (key, url, name) => {
-        // e.preventDefault();
-        clickedStation(key, url)
+    const savedStationsList = savedStations.map((station) => ({ value: station.key, label: station.name, url: station.url }));
 
-    }
-
-    const clickedStation = (key, url) => {
+    const handleChange = (selected) => {
         axios({
-            url: `https://api.citybik.es/${url}`,
+            url: `https://api.citybik.es/${selected.url}`,
             method: "GET",
         }).then((response) => {
-            stationSelect(response.data.network.stations, key);
+            const stationID = selected.value
+            const stations = response.data.network.stations
+            setUserStation(stations.find(selectedStation => selectedStation.id === stationID));
         });
-    }
-    const stationSelect = (stations, id) => {
-        const stationID = id
-        setUserStation(stations.find(selectedStation => selectedStation.id === stationID));
-    }
 
-    const handleRemove = (stationId) => {
-        const database = getDatabase(firebase)
-        const dbRef = ref(database, `/${stationId}`)
-        remove(dbRef)
     }
 
     return (
-        <div>
+        <div className='mainContent'>
             <h2>Saved Stations</h2>
-            <ul>
-                {savedStations.map((station) => {
-                    return (
-                        <li key={station.key}>
-                            <button onClick={() => handleClick(station.key, station.url, station.name)}>{station.name}</button>
-                            <button onClick={() => handleRemove(station.key)}>Remove</button>
-                        </li>
-                    )
-                })}
-            </ul>
+            <Select onChange={handleChange} options={savedStationsList} className="select" />
             {userStation ? <DisplayData userStation={userStation} /> : null}
         </div>
     );

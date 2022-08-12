@@ -2,9 +2,10 @@
 import { useJsApiLoader, GoogleMap, MarkerClusterer, Marker, InfoWindow } from '@react-google-maps/api'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
+import SaveStation from "./SaveStation"
 
 
-function DisplayMap() {
+function DisplayMap(url) {
     const { isLoaded } = useJsApiLoader({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY
     })
@@ -12,17 +13,16 @@ function DisplayMap() {
     const [stationGeo, setStationGeo] = useState()
     const [activeMarker, setActiveMarker] = useState(null);
 
-
     useEffect(() => {
         axios({
-            url: "https://api.citybik.es//v2/networks/bixi-toronto",
+            url: `https://api.citybik.es/${url.data}`,
             method: "GET",
         }).then((response) => {
             const stationData = response.data.network.stations
-            const mappedData = stationData.map((station) => ({ position: { lat: station.latitude, lng: station.longitude }, freeBikes: `${station.free_bikes}`, emptySlots: `${station.empty_slots}`, stationName: `${station.name}`, }))
+            const mappedData = stationData.map((station) => ({ position: { lat: station.latitude, lng: station.longitude }, id: station.id, freeBikes: station.free_bikes, emptySlots: station.empty_slots, stationName: station.name, href: url.data, }))
             setStationGeo(mappedData);
         });
-    }, []);
+    }, [url.data]);
 
     const markerClick = (marker) => {
         if (marker === activeMarker) {
@@ -40,9 +40,8 @@ function DisplayMap() {
     return isLoaded && stationGeo ? (
         <div className='displayMapContainer'>
             <GoogleMap
-                zoom={10}
-                mapContainerStyle={{ width: '100%', height: '100%' }}
-                // center={center}
+                zoom={1}
+                mapContainerStyle={{ height: '100%', width: '100%' }}
                 options={{
                     zoomControl: true,
                     streetViewControl: false,
@@ -54,10 +53,10 @@ function DisplayMap() {
             >
                 <MarkerClusterer minimumClusterSize={5}>
                     {(clusterer) =>
-                        stationGeo.map(({ position, stationName, emptySlots, freeBikes }) => (
+                        stationGeo.map(({ position, stationName, emptySlots, freeBikes, href, id }) => (
                             <>
                                 <Marker
-                                    // key={`marker-${position.lng}`}
+                                    key={`marker-${position.lng}`}
                                     position={position}
                                     clusterer={clusterer}
                                     clickable
@@ -68,9 +67,10 @@ function DisplayMap() {
                                         onCloseClick={() => setActiveMarker(null)}
                                     >
                                         <div>
-                                            <p>Station Name: {stationName}</p>
+                                            <p>{stationName}</p>
                                             <p>Free Bikes: {freeBikes}</p>
                                             <p>Empty Slots: {emptySlots}</p>
+                                            <SaveStation userStation={{ name: stationName, id: id }} stationInformation={{ href: href }} />
                                         </div>
                                     </InfoWindow>) : null}
                                 </Marker>
