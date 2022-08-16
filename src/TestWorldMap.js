@@ -63,7 +63,6 @@ function TestWorldMap() {
             const bounds = new window.google.maps.LatLngBounds();
             regions.forEach(({ position }) => bounds.extend(position));
             map.fitBounds(bounds);
-            console.log('i was calleds')
         }
     }, [map, regions])
 

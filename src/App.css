@@ -15,7 +15,7 @@
 
 .wrapper {
   max-width: 1260px;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -91,16 +91,17 @@ p {
 
 /* NavStyles */
 
+
 .sideNav {
   height: 100%;
   width: 250px;
   position: fixed;
   z-index: 1;
   top: 0;
-  left: 0;
+  /* left: 0; */
   background-color: var(--lightGreen);
   overflow-x: hidden;
-  transition: 0.5s;
+  transition: 0.25s;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -115,12 +116,38 @@ p {
   transition: 0.25s;
 }
 
+.active {
+  color: var(--darkOrange);
+
+}
+
 /* .sideNav>li:hover,
 :focus {
   color: var(--darkOrange);
   font-size: 2rem;
   transition: 0.25s;
 } */
+
+
+
+.pageTitle {
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  height: 100px;
+  color: var(--darkOrange);
+}
+
+.burgerButton {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  z-index: 2;
+  opacity: 0;
+}
 
 /* MainContent Styles */
 
@@ -129,7 +156,7 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  height: calc(100vh - 100px);
 }
 
 /* Search Bar Styling */
@@ -175,4 +202,76 @@ p {
   height: 100vh;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width:900px) {
+
+  .sideNav {
+    width: 200px;
+  }
+
+  .mainContent {
+    margin-left: 200px;
+  }
+
+  .displayMapContainer {
+    width: calc(100% - 200px);
+  }
+
+}
+
+@media (max-width:700px) {
+
+  .sideNav {
+    opacity: 0;
+    left: -100%;
+  }
+
+  .sideNavActive {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    background-color: var(--lightGreen);
+    overflow-x: hidden;
+    transition: 0.25s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    left: 0%;
+  }
+
+  .sideNavActive>li {
+    color: var(--lightOrange);
+    font-size: 2rem;
+    transition: 0.25s;
+  }
+
+  .mainContent {
+    margin-left: 0;
+  }
+
+  .pageTitle {
+    opacity: 1;
+  }
+
+  .displayMapContainer {
+    width: 100%;
+  }
+
+  .burgerButton {
+    opacity: 1;
+  }
+
+  .stationAndRegionSelect {
+    width: 90%;
+  }
+
+  .headerSection {
+    background-color: var(--lightGreen);
+  }
+
 }

@@ -6,8 +6,8 @@ const BikeAnimatedSVG = (props) => (
         x={0}
         xmlns="http://www.w3.org/2000/svg"
         style={{
-            height: "95vh",
-            width: "calc(95vw - 250px)",
+            height: "100%",
+            width: "100%",
             background: "#f1f2f3",
             shapeRendering: "auto",
         }}
