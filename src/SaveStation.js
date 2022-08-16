@@ -1,5 +1,5 @@
 import firebase from './firebase';
-import { getDatabase, ref, update, onValue } from 'firebase/database';
+import { getDatabase, ref, update, onValue, remove } from 'firebase/database';
 import { useState, useEffect } from "react"
 
 
@@ -22,7 +22,7 @@ function SaveStation({ userStation, stationInformation }) {
             setSavedStations(newState)
         })
 
-    }, [])
+    }, [savedExists])
 
     useEffect(() => {
         const checkStates = () => {
@@ -48,11 +48,18 @@ function SaveStation({ userStation, stationInformation }) {
 
     }
 
+    const handleRemove = (e) => {
+        e.preventDefault();
+        const database = getDatabase(firebase)
+        const dbRef = ref(database, `/${userStation.id}`)
+        remove(dbRef)
+    }
+
 
 
     return (
         <div>
-            {savedExists ? <div>Saved</div> : <button onClick={handleClick}>Save this Station</button>}
+            {savedExists ? <button onClick={(e) => handleRemove(e)}>Remove</button> : <button onClick={(e) => handleClick(e)}>Save this Station</button>}
         </div>
     );
 }

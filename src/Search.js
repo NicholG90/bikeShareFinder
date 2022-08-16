@@ -3,6 +3,7 @@ import axios from 'axios';
 import RegionSelect from "./RegionSelect";
 import StationSelect from "./StationSelect";
 import DisplayData from "./DisplayData";
+import BikeAnimatedSVG from './BikeAnimatedSVG';
 
 function Search() {
 
@@ -21,7 +22,6 @@ function Search() {
     }, []);
 
 
-
     const regionSelect = (selected) => {
         const regionID = selected
         const regionsCopy = [...regions]
@@ -29,7 +29,6 @@ function Search() {
         setUserRegion(userSelectedRegion)
         setUserStation(null)
     }
-
 
 
     useEffect(() => {
@@ -48,11 +47,9 @@ function Search() {
     }
 
 
-
-
     return (
-        <div>
-            {regions ? <RegionSelect data={regions} regionSelect={regionSelect} /> : <h2>Loading</h2>}
+        <div className='mainContent'>
+            {regions ? <RegionSelect data={regions} regionSelect={regionSelect} /> : <BikeAnimatedSVG />}
             {stationInformation ? <StationSelect data={stationInformation} stationSelect={stationSelect} /> : null}
             {userStation ? <DisplayData userStation={userStation} stationInformation={stationInformation} /> : null}
         </div>
