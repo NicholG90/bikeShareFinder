@@ -1,13 +1,16 @@
 import './App.css';
 import Navigation from './Navigation';
+import { AuthProvider } from './Auth';
 
 
 function App() {
 
   return (
-    <div>
-      <Navigation />
-    </div>
+    <AuthProvider>
+      <div>
+        <Navigation />
+      </div>
+    </AuthProvider>
   );
 }
 

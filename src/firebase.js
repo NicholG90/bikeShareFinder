@@ -1,5 +1,6 @@
 
 import { initializeApp } from "firebase/app";
+import { GoogleAuthProvider, getAuth, signInWithPopup, signInAnonymously, signOut } from "firebase/auth";
 
 const firebaseConfig = {
 
@@ -14,5 +15,36 @@ const firebaseConfig = {
 };
 
 const firebase = initializeApp(firebaseConfig);
+export const auth = getAuth(firebase);
+
+
+
+const googleProvider = new GoogleAuthProvider()
+export const signInWithGoogle = async () => {
+  try {
+    const res = await signInWithPopup(auth, googleProvider);
+    const user = res.user;
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
+
+export const signInAnon = async () => {
+  try {
+    const res = await signInAnonymously(auth)
+    const user = res.user;
+  } catch (err) {
+    alert(err.message);
+  }
+};
+
+export const logout = () => {
+  signOut(auth);
+};
 
 export default firebase
+
+
+

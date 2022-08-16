@@ -1,11 +1,15 @@
 import { NavLink, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Home from './Home';
 import SavedStations from './SavedStations';
 import Search from './Search';
 import MapPage from "./MapPage"
+import Login from "./Login"
+import { logout } from "./firebase";
+import { AuthContext } from "./Auth";
 
 function Navigation() {
+    const { currentUser } = useContext(AuthContext);
     const [headerName, setHeaderName] = useState('');
     const [click, setClick] = useState(false);
 
@@ -52,6 +56,11 @@ function Navigation() {
                     <li>
                         <NavLink to="/saved" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Saved Stations</NavLink>
                     </li>
+                    <li >
+                        {!!currentUser ?
+                            <button onClick={logout}>Sign Out</button> :
+                            <NavLink to="/login">Login</NavLink>}
+                    </li>
 
                 </ul>
             </nav>
@@ -61,6 +70,7 @@ function Navigation() {
                 <Route path="/search" element={<Search />} />
                 <Route path="/map" element={<MapPage />} />
                 <Route path="/saved" element={<SavedStations />} />
+                <Route path="/login" element={<Login />} />
 
             </Routes>
         </div>
