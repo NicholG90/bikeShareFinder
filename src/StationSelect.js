@@ -1,4 +1,6 @@
 import Select from 'react-select'
+import { customStyles } from './selectStyling';
+
 
 function StationSelect({ data, stationSelect }) {
 
@@ -12,7 +14,7 @@ function StationSelect({ data, stationSelect }) {
     return (
         <div className='stationAndRegionSelect'>
             <label>Choose a Station:</label>
-            <Select onChange={handleSelect} options={stationNames} />
+            <Select onChange={handleSelect} options={stationNames} styles={customStyles} />
         </div>
 
     )

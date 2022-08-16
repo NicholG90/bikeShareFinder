@@ -4,6 +4,8 @@ import firebase from './firebase';
 import DisplayData from "./DisplayData";
 import axios from 'axios';
 import Select from 'react-select'
+import { customStyles } from './selectStyling';
+
 
 
 
@@ -46,7 +48,7 @@ function SavedStations() {
         <div className='mainContent'>
             <div className="stationAndRegionSelect">
                 <label>Select a Saved Station</label>
-                <Select onChange={handleChange} options={savedStationsList} className="select" />
+                <Select onChange={handleChange} options={savedStationsList} styles={customStyles} />
                 {userStation ? <DisplayData userStation={userStation} stationInformation={userStation} /> : null}
             </div>
         </div>
