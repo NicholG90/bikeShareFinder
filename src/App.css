@@ -178,10 +178,11 @@ p {
   height: fit-content;
   width: fit-content;
   background-color: var(--lightGreen);
-  border: 2px var(--darkGreen) solid;
+  border: 2px var(--darkOrange) solid;
   border-radius: 15px;
   padding: 20px 20px;
   margin: 0 auto;
+  margin-top: 25px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 

@@ -24,9 +24,7 @@ function Search() {
 
     const regionSelect = (selected) => {
         const regionID = selected
-        const regionsCopy = [...regions]
-        const userSelectedRegion = regionsCopy.find(selectedRegion => selectedRegion.id === regionID);
-        setUserRegion(userSelectedRegion)
+        setUserRegion(regions.find(selectedRegion => selectedRegion.id === regionID));
         setUserStation(null)
     }
 

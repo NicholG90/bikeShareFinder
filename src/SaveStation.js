@@ -53,6 +53,8 @@ function SaveStation({ userStation, stationInformation }) {
         const database = getDatabase(firebase)
         const dbRef = ref(database, `/${userStation.id}`)
         remove(dbRef)
+        setSavedExists(false)
+
     }
 
 
