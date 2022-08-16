@@ -14,13 +14,13 @@ function Navigation() {
                         <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="/search">Search</Link>
+                        <Link to="/search">Search Stations</Link>
                     </li>
                     <li>
                         <Link to="/map">Map</Link>
                     </li>
                     <li>
-                        <Link to="/saved">Saved</Link>
+                        <Link to="/saved">Saved Stations</Link>
                     </li>
                     <li>
                         <Link to="/test">Test</Link>

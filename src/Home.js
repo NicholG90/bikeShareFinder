@@ -1,6 +1,10 @@
+import BikeSVG from "./BikeSVG"
+
 function Home() {
     return (
-        <div>Home</div>
+        <div className="mainContent">
+            <BikeSVG className="bikeSVG" />
+        </div>
     )
 }
 

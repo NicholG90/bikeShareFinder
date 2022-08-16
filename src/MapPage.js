@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import RegionSelect from './RegionSelect'
 import DisplayMap from './DisplayMap'
+import BikeAnimatedSVG from './BikeAnimatedSVG'
 
 function MapPage() {
 
@@ -29,7 +30,7 @@ function MapPage() {
 
     return (
         <div className='mainContent'>
-            {regions ? <RegionSelect data={regions} regionSelect={regionSelect} /> : <h2>Loading</h2>}
+            {regions ? <RegionSelect data={regions} regionSelect={regionSelect} /> : <BikeAnimatedSVG />}
             {userRegion ? <DisplayMap data={userRegion.href} /> : null}
         </div>
     )

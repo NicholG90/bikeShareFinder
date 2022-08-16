@@ -10,7 +10,7 @@ function RegionSelect({ data, regionSelect }) {
     }
 
     return (
-        <div className='selectSection'>
+        <div className='stationAndRegionSelect'>
             <label>Choose a Region:</label>
             <Select onChange={handleSelect} options={regionNames} className="select" />
         </div>

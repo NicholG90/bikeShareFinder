@@ -22,7 +22,7 @@ function SaveStation({ userStation, stationInformation }) {
             setSavedStations(newState)
         })
 
-    }, [])
+    }, [savedExists])
 
     useEffect(() => {
         const checkStates = () => {

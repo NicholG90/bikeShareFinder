@@ -1,8 +1,9 @@
 
-import { useJsApiLoader, GoogleMap, MarkerClusterer, Marker, InfoWindow } from '@react-google-maps/api'
-import { useState, useEffect } from 'react'
+import { useJsApiLoader, GoogleMap, MarkerClusterer, MarkerF, InfoWindow } from '@react-google-maps/api'
+import { useState, useEffect, useCallback } from 'react'
 import axios from 'axios';
 import SaveStation from "./SaveStation"
+import BikeAnimatedSVG from './BikeAnimatedSVG';
 
 
 function DisplayMap(url) {
@@ -12,17 +13,29 @@ function DisplayMap(url) {
 
     const [stationGeo, setStationGeo] = useState()
     const [activeMarker, setActiveMarker] = useState(null);
+    const [map, setMap] = useState(null);
+    const [mapLoaded, setMapLoaded] = useState(true)
 
     useEffect(() => {
+        setMapLoaded(false);
         axios({
             url: `https://api.citybik.es/${url.data}`,
             method: "GET",
         }).then((response) => {
             const stationData = response.data.network.stations
-            const mappedData = stationData.map((station) => ({ position: { lat: station.latitude, lng: station.longitude }, id: station.id, freeBikes: station.free_bikes, emptySlots: station.empty_slots, stationName: station.name, href: url.data, }))
+            const mappedData = stationData.map((station) => ({ position: { lat: station.latitude, lng: station.longitude }, id: station.id, freeBikes: station.free_bikes, emptySlots: station.empty_slots, stationName: station.name, href: url.data, key: station.id }))
             setStationGeo(mappedData);
+            setMapLoaded(true)
         });
     }, [url.data]);
+
+    useEffect(() => {
+        if (map) {
+            const bounds = new window.google.maps.LatLngBounds();
+            stationGeo.forEach(({ position }) => bounds.extend(position));
+            map.fitBounds(bounds);
+        }
+    }, [map, stationGeo])
 
     const markerClick = (marker) => {
         if (marker === activeMarker) {
@@ -31,13 +44,12 @@ function DisplayMap(url) {
         setActiveMarker(marker);
     }
 
-    const handleOnLoad = (map) => {
-        const bounds = new window.google.maps.LatLngBounds();
-        stationGeo.forEach(({ position }) => bounds.extend(position));
-        map.fitBounds(bounds);
-    };
+    const onLoad = useCallback(
+        (map) => {
+            setMap(map);
+        }, []);
 
-    return isLoaded && stationGeo ? (
+    return isLoaded && mapLoaded && stationGeo ? (
         <div className='displayMapContainer'>
             <GoogleMap
                 zoom={1}
@@ -48,14 +60,14 @@ function DisplayMap(url) {
                     mapTypeControl: true,
                     fullscreenControl: true,
                 }}
-                onLoad={handleOnLoad}
+                onLoad={onLoad}
                 onClick={() => setActiveMarker(null)}
             >
                 <MarkerClusterer minimumClusterSize={5}>
                     {(clusterer) =>
                         stationGeo.map(({ position, stationName, emptySlots, freeBikes, href, id }) => (
                             <>
-                                <Marker
+                                <MarkerF
                                     key={`marker-${position.lng}`}
                                     position={position}
                                     clusterer={clusterer}
@@ -73,17 +85,15 @@ function DisplayMap(url) {
                                             <SaveStation userStation={{ name: stationName, id: id }} stationInformation={{ href: href }} />
                                         </div>
                                     </InfoWindow>) : null}
-                                </Marker>
-
+                                </MarkerF>
                             </>
-
                         ))
                     }
                 </MarkerClusterer>
 
             </GoogleMap>
         </div>
-    ) : <></>
+    ) : <BikeAnimatedSVG />
 
 }
 

@@ -1,6 +1,7 @@
 
-import { useJsApiLoader, GoogleMap, DirectionsRenderer } from '@react-google-maps/api'
+import { useJsApiLoader, GoogleMap, DirectionsRenderer, Marker, InfoWindow } from '@react-google-maps/api'
 import { useState, useEffect } from 'react'
+import SaveStation from './SaveStation'
 
 
 function MapResult({ geolocation }) {
@@ -14,9 +15,10 @@ function MapResult({ geolocation }) {
     const [directionsResponse, setDirectionsResponse] = useState(null)
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
+    const [activeMarker, setActiveMarker] = useState(null);
+
 
     const center = { lat: geolocation.stationLat, lng: geolocation.stationLong }
-
 
     useEffect(() => {
 
@@ -24,26 +26,39 @@ function MapResult({ geolocation }) {
             calculateRoute();
         }
         async function calculateRoute() {
-
-            const directionsService = new window.google.maps.DirectionsService()
-            const results = await directionsService.route({
-                origin: `${geolocation.userLat}, ${geolocation.userLong}`,
-                destination: `${geolocation.stationLat}, ${geolocation.stationLong}`,
-                travelMode: window.google.maps.TravelMode.WALKING,
-            })
-            setDirectionsResponse(results)
-            setDistance(results.routes[0].legs[0].distance.text)
-            setDuration(results.routes[0].legs[0].duration.text)
+            try {
+                const directionsService = new window.google.maps.DirectionsService()
+                const results = await directionsService.route({
+                    origin: `${geolocation.userLat}, ${geolocation.userLong}`,
+                    destination: `${geolocation.stationLat}, ${geolocation.stationLong}`,
+                    travelMode: window.google.maps.TravelMode.WALKING,
+                })
+                setDirectionsResponse(results)
+                setDistance(results.routes[0].legs[0].distance.text)
+                setDuration(results.routes[0].legs[0].duration.text)
+            }
+            catch (error) {
+                setDistance('No Directions Available')
+                setDuration('No Directions Available')
+            }
         }
 
     }, [isLoaded, geolocation])
+
+    const markerClick = (marker) => {
+        if (marker === activeMarker) {
+            return;
+        }
+        setActiveMarker(marker);
+    }
+
 
 
     return isLoaded ? (
         <>
             <GoogleMap
-                zoom={10}
-                mapContainerStyle={{ width: '50%', height: '50%' }}
+                zoom={13}
+                mapContainerStyle={{ width: '70vw', height: '70vh', margin: '0 auto' }}
                 options={{
                     zoomControl: true,
                     streetViewControl: false,
@@ -56,9 +71,27 @@ function MapResult({ geolocation }) {
                 {directionsResponse && (
                     <DirectionsRenderer directions={directionsResponse} />
                 )}
+                <Marker
+                    key={`marker-${center}`}
+                    position={center}
+                    clickable
+                    onClick={() => markerClick(`marker-${geolocation.stationLat}`)}
+                >
+                    {activeMarker === `marker-${geolocation.stationLat}` ? (<InfoWindow
+                        key={`infowindow-${geolocation.stationLong}`}
+                        onCloseClick={() => setActiveMarker(null)}
+                    >
+                        <div>
+                            <p>{geolocation.stationName}</p>
+                            <p>Free Bikes: {geolocation.freeBikes}</p>
+                            <p>Empty Slots: {geolocation.emptySlots}</p>
+                            <SaveStation userStation={{ name: geolocation.stationName, id: geolocation.id }} stationInformation={{ href: geolocation.href }} />
+                        </div>
+                    </InfoWindow>) : null}
+                </Marker>
             </GoogleMap>
-            {directionsResponse && (<p>Walking Time: {duration}</p>)}
-            {directionsResponse && (<p>Distance: {distance}</p>)}
+            <p>Walking Time: {duration}</p>
+            <p>Distance: {distance}</p>
         </>
     ) : <></>
 

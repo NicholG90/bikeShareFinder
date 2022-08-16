@@ -10,7 +10,7 @@ function StationSelect({ data, stationSelect }) {
     }
 
     return (
-        <div className='selectSection'>
+        <div className='stationAndRegionSelect'>
             <label>Choose a Station:</label>
             <Select onChange={handleSelect} options={stationNames} />
         </div>

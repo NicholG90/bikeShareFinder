@@ -1,6 +1,6 @@
 
 import { useJsApiLoader, GoogleMap, MarkerClusterer, Marker, InfoWindow } from '@react-google-maps/api'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import axios from 'axios';
 
 
@@ -13,6 +13,10 @@ function TestWorldMap() {
     const [activeMarker, setActiveMarker] = useState(null);
     const [regionSelected, setRegionSelected] = useState(false)
     const [url, setUrl] = useState()
+    const [map, setMap] = useState(null);
+    const [regionReset, setRegionReset] = useState(false);
+
+
 
     useEffect(() => {
         if (regionSelected === false) {
@@ -48,18 +52,32 @@ function TestWorldMap() {
             return;
         }
         setActiveMarker(marker);
+        setRegionReset(false)
     }
 
-    const handleOnLoad = (map) => {
-        const bounds = new window.google.maps.LatLngBounds();
-        regions.forEach(({ position }) => bounds.extend(position));
-        map.fitBounds(bounds);
-    };
+    // const handleOnLoad = (map) => {
+    //     const bounds = new window.google.maps.LatLngBounds();
+    //     regions.forEach(({ position }) => bounds.extend(position));
+    //     map.fitBounds(bounds);
+    // };
+    useEffect(() => {
+        if (map) {
+            const bounds = new window.google.maps.LatLngBounds();
+            regions.forEach(({ position }) => bounds.extend(position));
+            map.fitBounds(bounds);
+            console.log('i was calleds')
+        }
+    }, [map, regionSelected])
 
     const regionSelectedClick = (url) => {
         setRegionSelected(true)
         setUrl(url)
     }
+
+    const onLoad = useCallback(
+        (map) => {
+            setMap(map);
+        }, []);
 
     return isLoaded && regions ? (
         <div className='mainContent'>
@@ -73,7 +91,7 @@ function TestWorldMap() {
                         mapTypeControl: true,
                         fullscreenControl: true,
                     }}
-                    onLoad={handleOnLoad}
+                    onLoad={onLoad}
                     onClick={() => setActiveMarker(null)}
                 >
                     <MarkerClusterer minimumClusterSize={5}>

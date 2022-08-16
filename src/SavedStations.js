@@ -44,9 +44,11 @@ function SavedStations() {
 
     return (
         <div className='mainContent'>
-            <h2>Saved Stations</h2>
-            <Select onChange={handleChange} options={savedStationsList} className="select" />
-            {userStation ? <DisplayData userStation={userStation} /> : null}
+            <div className="stationAndRegionSelect">
+                <h2>Saved Stations</h2>
+                <Select onChange={handleChange} options={savedStationsList} className="select" />
+                {userStation ? <DisplayData userStation={userStation} stationInformation={userStation} /> : null}
+            </div>
         </div>
     );
 }
