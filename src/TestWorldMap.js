@@ -14,7 +14,6 @@ function TestWorldMap() {
     const [regionSelected, setRegionSelected] = useState(false)
     const [url, setUrl] = useState()
     const [map, setMap] = useState(null);
-    const [regionReset, setRegionReset] = useState(false);
 
 
 
@@ -52,7 +51,6 @@ function TestWorldMap() {
             return;
         }
         setActiveMarker(marker);
-        setRegionReset(false)
     }
 
     // const handleOnLoad = (map) => {
@@ -67,7 +65,7 @@ function TestWorldMap() {
             map.fitBounds(bounds);
             console.log('i was calleds')
         }
-    }, [map, regionSelected])
+    }, [map, regions])
 
     const regionSelectedClick = (url) => {
         setRegionSelected(true)
