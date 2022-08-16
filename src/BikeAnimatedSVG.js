@@ -5,12 +5,15 @@ const BikeAnimatedSVG = (props) => (
         y={0}
         x={0}
         xmlns="http://www.w3.org/2000/svg"
+        id="\u5716\u5C64_1"
         style={{
             height: "100%",
             width: "100%",
-            background: "#f1f2f3",
+            background: "#f1f2f3 0 0",
             shapeRendering: "auto",
         }}
+        width={200}
+        height={200}
         {...props}
     >
         <g
@@ -28,7 +31,7 @@ const BikeAnimatedSVG = (props) => (
                                 transformOrigin: "50px 50px 0",
                                 opacity: 1,
                                 animation:
-                                    "1.11111s linear -.625s infinite normal forwards running blink-0fa1d624-95d1-4ee4-9495-5b9f47d1166f",
+                                    "1.11111s linear -.625s infinite normal forwards running blink-b5990dfa-ad5b-4353-8ac3-b502e04adbdc",
                             }}
                             className="ldl-layer"
                         >
@@ -41,8 +44,8 @@ const BikeAnimatedSVG = (props) => (
                                 cy={61.7}
                                 cx={21.1}
                                 style={{
-                                    fill: "#fff",
-                                    stroke: "#333",
+                                    fill: "#264653",
+                                    stroke: "#e76f51",
                                 }}
                                 className="ldl-ani"
                             />
@@ -52,7 +55,7 @@ const BikeAnimatedSVG = (props) => (
                                 transformOrigin: "50px 50px 0",
                                 opacity: 1,
                                 animation:
-                                    "1.11111s linear -.694444s infinite normal forwards running blink-0fa1d624-95d1-4ee4-9495-5b9f47d1166f",
+                                    "1.11111s linear -.694444s infinite normal forwards running blink-b5990dfa-ad5b-4353-8ac3-b502e04adbdc",
                             }}
                             className="ldl-layer"
                         >
@@ -62,7 +65,7 @@ const BikeAnimatedSVG = (props) => (
                                 cy={61.7}
                                 cx={21.1}
                                 style={{
-                                    fill: "#e0e0e0",
+                                    fill: "#2a9d8f",
                                 }}
                                 className="ldl-ani"
                             />
@@ -76,7 +79,7 @@ const BikeAnimatedSVG = (props) => (
                                 transformOrigin: "50px 50px 0",
                                 opacity: 1,
                                 animation:
-                                    "1.11111s linear -.763889s infinite normal forwards running blink-0fa1d624-95d1-4ee4-9495-5b9f47d1166f",
+                                    "1.11111s linear -.763889s infinite normal forwards running blink-b5990dfa-ad5b-4353-8ac3-b502e04adbdc",
                             }}
                             className="ldl-layer"
                         >
@@ -89,8 +92,8 @@ const BikeAnimatedSVG = (props) => (
                                 cy={61.7}
                                 cx={78.9}
                                 style={{
-                                    fill: "#fff",
-                                    stroke: "#333",
+                                    fill: "#264653",
+                                    stroke: "#e76f51",
                                 }}
                                 className="ldl-ani"
                             />
@@ -100,7 +103,7 @@ const BikeAnimatedSVG = (props) => (
                                 transformOrigin: "50px 50px 0",
                                 opacity: 1,
                                 animation:
-                                    "1.11111s linear -.833333s infinite normal forwards running blink-0fa1d624-95d1-4ee4-9495-5b9f47d1166f",
+                                    "1.11111s linear -.833333s infinite normal forwards running blink-b5990dfa-ad5b-4353-8ac3-b502e04adbdc",
                             }}
                             className="ldl-layer"
                         >
@@ -110,7 +113,7 @@ const BikeAnimatedSVG = (props) => (
                                 cy={61.7}
                                 cx={78.9}
                                 style={{
-                                    fill: "#e0e0e0",
+                                    fill: "#2a9d8f",
                                 }}
                                 className="ldl-ani"
                             />
@@ -124,7 +127,7 @@ const BikeAnimatedSVG = (props) => (
                                 transformOrigin: "50px 50px 0",
                                 opacity: 1,
                                 animation:
-                                    "1.11111s linear -.902778s infinite normal forwards running blink-0fa1d624-95d1-4ee4-9495-5b9f47d1166f",
+                                    "1.11111s linear -.902778s infinite normal forwards running blink-b5990dfa-ad5b-4353-8ac3-b502e04adbdc",
                             }}
                             className="ldl-layer"
                         >
@@ -132,7 +135,7 @@ const BikeAnimatedSVG = (props) => (
                                 fill="#77a4bd"
                                 d="M80.3 61 63.7 24.1c-.3-.8-1.3-1.1-2-.8-.8.3-1.1 1.3-.8 2l6.3 14H37.5L35 33.7 32.2 35l2.8 6.2-14.2 18.4c-.5.7-.6 1.6-.2 2.3.4.8 1.1 1.2 2 1.2h23.3l1-.4 22.3-19.1 8.3 18.5c.3.6.8.9 1.4.9.2 0 .4 0 .6-.1.8-.2 1.2-1.1.8-1.9zM36.4 44.4l7.1 15.8H24.3l12.1-15.8zm10 14.8-7.5-16.7h27L46.4 59.2z"
                                 style={{
-                                    fill: "#77a4bd",
+                                    fill: "#2a9d8f",
                                 }}
                                 className="ldl-ani"
                             />
@@ -142,7 +145,7 @@ const BikeAnimatedSVG = (props) => (
                                 transformOrigin: "50px 50px 0",
                                 opacity: 1,
                                 animation:
-                                    "1.11111s linear -.972222s infinite normal forwards running blink-0fa1d624-95d1-4ee4-9495-5b9f47d1166f",
+                                    "1.11111s linear -.972222s infinite normal forwards running blink-b5990dfa-ad5b-4353-8ac3-b502e04adbdc",
                             }}
                             className="ldl-layer"
                         >
@@ -155,7 +158,7 @@ const BikeAnimatedSVG = (props) => (
                                 stroke="#c33737"
                                 fill="none"
                                 style={{
-                                    stroke: "#c33737",
+                                    stroke: "#e76f51",
                                 }}
                                 className="ldl-ani"
                             />
@@ -165,7 +168,7 @@ const BikeAnimatedSVG = (props) => (
                                 transformOrigin: "50px 50px 0",
                                 opacity: 1,
                                 animation:
-                                    "1.11111s linear -1.04167s infinite normal forwards running blink-0fa1d624-95d1-4ee4-9495-5b9f47d1166f",
+                                    "1.11111s linear -1.04167s infinite normal forwards running blink-b5990dfa-ad5b-4353-8ac3-b502e04adbdc",
                             }}
                             className="ldl-layer"
                         >
@@ -178,8 +181,8 @@ const BikeAnimatedSVG = (props) => (
                                 cy={61}
                                 cx={45.5}
                                 style={{
-                                    fill: "#a0c8d7",
-                                    stroke: "#77a4bd",
+                                    fill: "#e9c46a",
+                                    stroke: "#2a9d8f",
                                 }}
                                 className="ldl-ani"
                             />
@@ -189,7 +192,7 @@ const BikeAnimatedSVG = (props) => (
                                 transformOrigin: "50px 50px 0",
                                 opacity: 1,
                                 animation:
-                                    "1.11111s linear -1.11111s infinite normal forwards running blink-0fa1d624-95d1-4ee4-9495-5b9f47d1166f",
+                                    "1.11111s linear -1.11111s infinite normal forwards running blink-b5990dfa-ad5b-4353-8ac3-b502e04adbdc",
                             }}
                             className="ldl-layer"
                         >
@@ -202,7 +205,7 @@ const BikeAnimatedSVG = (props) => (
                                 stroke="#c33737"
                                 fill="none"
                                 style={{
-                                    stroke: "#c33737",
+                                    stroke: "#e76f51",
                                 }}
                                 className="ldl-ani"
                             />
@@ -211,9 +214,9 @@ const BikeAnimatedSVG = (props) => (
                 </g>
             </g>
         </g>
-        <style id="blink-0fa1d624-95d1-4ee4-9495-5b9f47d1166f">
+        <style id="blink-b5990dfa-ad5b-4353-8ac3-b502e04adbdc">
             {
-                "@keyframes blink-0fa1d624-95d1-4ee4-9495-5b9f47d1166f{0%,49.75%,to{opacity:1}50.25%,99.5%{opacity:0}}"
+                "@keyframes blink-b5990dfa-ad5b-4353-8ac3-b502e04adbdc{0%,49.75%,to{opacity:1}50.25%,99.5%{opacity:0}}"
             }
         </style>
     </svg>

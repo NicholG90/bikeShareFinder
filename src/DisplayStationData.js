@@ -2,7 +2,7 @@ import { useState } from 'react';
 import MapResult from './MapResult';
 import SaveStation from "./SaveStation";
 
-function DisplayData({ userStation, stationInformation }) {
+function DisplayStationData({ userStation, stationInformation }) {
 
     const [userLat, setUserLat] = useState();
     const [userLong, setUserLong] = useState();
@@ -45,4 +45,4 @@ function DisplayData({ userStation, stationInformation }) {
     )
 }
 
-export default DisplayData
+export default DisplayStationData

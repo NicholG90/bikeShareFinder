@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getDatabase, ref, onValue } from 'firebase/database';
 import firebase from './firebase';
-import DisplayData from "./DisplayData";
+import DisplayStationData from "./DisplayStationData";
 import axios from 'axios';
 import Select from 'react-select'
 import { customStyles } from './selectStyling';
@@ -49,7 +49,7 @@ function SavedStations() {
             <div className="stationAndRegionSelect">
                 <label>Select a Saved Station</label>
                 <Select onChange={handleChange} options={savedStationsList} styles={customStyles} />
-                {userStation ? <DisplayData userStation={userStation} stationInformation={userStation} /> : null}
+                {userStation ? <DisplayStationData userStation={userStation} stationInformation={userStation} /> : null}
             </div>
         </div>
     );

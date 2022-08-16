@@ -10,8 +10,6 @@ function RegionSelect({ data, regionSelect }) {
         regionSelect(selected.value)
     }
 
-    console.log(customStyles)
-
     return (
         <div className='stationAndRegionSelect'>
             <label>Choose a Region:</label>

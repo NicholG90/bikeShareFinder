@@ -81,8 +81,8 @@ function MapResult({ geolocation }) {
                         key={`infowindow-${geolocation.stationLong}`}
                         onCloseClick={() => setActiveMarker(null)}
                     >
-                        <div>
-                            <p>{geolocation.stationName}</p>
+                        <div className="mapMarker">
+                            <p className='markerTitle'>{geolocation.stationName}</p>
                             <p>Free Bikes: {geolocation.freeBikes}</p>
                             <p>Empty Slots: {geolocation.emptySlots}</p>
                             <SaveStation userStation={{ name: geolocation.stationName, id: geolocation.id }} stationInformation={{ href: geolocation.href }} />
@@ -90,8 +90,10 @@ function MapResult({ geolocation }) {
                     </InfoWindow>) : null}
                 </Marker>
             </GoogleMap>
-            <p>Walking Time: {duration}</p>
-            <p>Distance: {distance}</p>
+            <div className='directionsSection'>
+                <p>Walking Time: {duration}</p>
+                <p>Distance: {distance}</p>
+            </div>
         </>
     ) : <></>
 

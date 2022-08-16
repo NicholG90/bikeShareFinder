@@ -77,16 +77,27 @@ p {
 
 /* Display Map Styles */
 
-.displayMapContainer {
-  height: 100vh;
-  width: calc(100vw - 250px);
-  position: relative;
+
+.mapMarker {
+  padding: 15px;
+  text-align: center;
 }
 
-.resetButton {
-  position: absolute;
-  bottom: 200px;
-  left: 200px;
+.markerTitle {
+  font-size: 0.8rem;
+}
+
+.mapMarker>p {
+  padding: 5px;
+}
+
+.directionsSection {
+  background-color: var(--lightGreen);
+  color: var(--lightOrange);
+  height: 75px;
+  padding: 15px;
+  position: relative;
+  top: -75px;
 }
 
 /* NavStyles */
@@ -131,14 +142,7 @@ p {
 
 
 .pageTitle {
-  width: 75%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  opacity: 0;
-  height: 100px;
-  color: var(--darkOrange);
+  display: none;
 }
 
 .burgerButton {
@@ -156,13 +160,14 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: calc(100vh - 100px);
+  height: 100vh;
 }
 
 /* Search Bar Styling */
 
 .stationAndRegionSelect {
   width: 50%;
+  padding-top: 25px;
   margin: 0 auto;
   text-align: center;
 }
@@ -214,9 +219,6 @@ p {
     margin-left: 200px;
   }
 
-  .displayMapContainer {
-    width: calc(100% - 200px);
-  }
 
 }
 
@@ -252,15 +254,18 @@ p {
 
   .mainContent {
     margin-left: 0;
+    height: calc(100vh - 100px);
   }
 
   .pageTitle {
-    opacity: 1;
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--darkOrange);
   }
 
-  .displayMapContainer {
-    width: 100%;
-  }
 
   .burgerButton {
     opacity: 1;

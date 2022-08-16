@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import RegionSelect from "./RegionSelect";
 import StationSelect from "./StationSelect";
-import DisplayData from "./DisplayData";
+import DisplayStationData from "./DisplayStationData";
 import BikeAnimatedSVG from './BikeAnimatedSVG';
 
 function Search() {
@@ -49,7 +49,7 @@ function Search() {
         <div className='mainContent'>
             {regions ? <RegionSelect data={regions} regionSelect={regionSelect} /> : <BikeAnimatedSVG />}
             {stationInformation ? <StationSelect data={stationInformation} stationSelect={stationSelect} /> : null}
-            {userStation ? <DisplayData userStation={userStation} stationInformation={stationInformation} /> : null}
+            {userStation ? <DisplayStationData userStation={userStation} stationInformation={stationInformation} /> : null}
         </div>
     );
 }
