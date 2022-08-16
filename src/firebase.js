@@ -22,8 +22,7 @@ export const auth = getAuth(firebase);
 const googleProvider = new GoogleAuthProvider()
 export const signInWithGoogle = async () => {
   try {
-    const res = await signInWithPopup(auth, googleProvider);
-    const user = res.user;
+    await signInWithPopup(auth, googleProvider);
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -33,8 +32,7 @@ export const signInWithGoogle = async () => {
 
 export const signInAnon = async () => {
   try {
-    const res = await signInAnonymously(auth)
-    const user = res.user;
+    await signInAnonymously(auth)
   } catch (err) {
     alert(err.message);
   }
