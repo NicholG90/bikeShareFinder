@@ -4,7 +4,6 @@ import Home from './Home';
 import SavedStations from './SavedStations';
 import Search from './Search';
 import MapPage from "./MapPage"
-import TestWorldMap from './TestWorldMap';
 
 function Navigation() {
     const [headerName, setHeaderName] = useState('');
@@ -53,9 +52,7 @@ function Navigation() {
                     <li>
                         <NavLink to="/saved" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Saved Stations</NavLink>
                     </li>
-                    <li>
-                        <NavLink to="/test" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Test</NavLink>
-                    </li>
+
                 </ul>
             </nav>
 
@@ -64,7 +61,6 @@ function Navigation() {
                 <Route path="/search" element={<Search />} />
                 <Route path="/map" element={<MapPage />} />
                 <Route path="/saved" element={<SavedStations />} />
-                <Route path="/test" element={<TestWorldMap />} />
 
             </Routes>
         </div>
