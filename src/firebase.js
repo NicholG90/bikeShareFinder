@@ -1,11 +1,11 @@
 
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, getAuth, signInAnonymously, signInWithRedirect, signOut } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithPopup, signInAnonymously, signOut } from "firebase/auth";
 
 const firebaseConfig = {
 
   apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-  authDomain: "auth.bikesharefinder-main.nickgourlay.com",
+  authDomain: "bikesharefinder-73c4d.firebaseapp.com",
   databaseURL: "https://bikesharefinder-73c4d-default-rtdb.firebaseio.com",
   projectId: "bikesharefinder-73c4d",
   storageBucket: "bikesharefinder-73c4d.appspot.com",
@@ -22,13 +22,14 @@ export const auth = getAuth(firebase);
 const googleProvider = new GoogleAuthProvider()
 export const signInWithGoogle = async () => {
   try {
-    await signInWithRedirect(auth, googleProvider);
+    await signInWithPopup(auth, googleProvider);
   } catch (err) {
-    console.error(err);
-    if (err === "auth/popup-closed-by-user")
-      alert('Pop Up Was Blocked');
+    if (err.code === "auth/popup-closed-by-user")
+      alert('The Login Pop Up was Closed before Login was Completed.');
+    if (err.code === "auth/popup-blocked")
+      alert('The Login Pop Up was blocked.');
     else
-      alert('Other Error');
+      console.log(err);
   }
 };
 

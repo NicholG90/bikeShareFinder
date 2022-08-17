@@ -68,13 +68,6 @@ p {
   letter-spacing: 0px;
 }
 
-/* Styling SVGs */
-
-.bikeSVG {
-  width: 50vw;
-  height: 50vh;
-}
-
 /* Display Map Styles */
 
 
@@ -139,6 +132,11 @@ p {
 
 }
 
+.sideNav>li:hover {
+  color: var(--darkOrange);
+  transition: 0.25s;
+}
+
 .junoCredit {
   font-size: 0.8rem;
   position: absolute;
@@ -171,6 +169,19 @@ p {
   align-items: center;
   text-align: center;
   max-height: calc(100vh - 100px)
+}
+
+.introDescription {
+  color: var(--darkBlue);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+.introLinks:hover {
+  color: var(--darkOrange);
+  transition: 0.25s;
 }
 
 
@@ -380,8 +391,8 @@ p {
     width: 100%;
   }
 
-    .introDescription {
-      margin-top: 100px
-    }
+  .introDescription {
+    margin-top: 100px
+  }
 
 }
