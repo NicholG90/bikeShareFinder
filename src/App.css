@@ -260,6 +260,7 @@ p {
   background-repeat: no-repeat;
   background-position: 12px 11px;
   width: 220px;
+  cursor: pointer;
 }
 
 /* Google Login CSS Credtit = https: //codepen.io/mupkoo/pen/YgddgB */
@@ -276,6 +277,7 @@ p {
   background-repeat: no-repeat;
   background-position: 12px 11px;
   width: 220px;
+  cursor: pointer;
 }
 
 @media (max-width:900px) {
