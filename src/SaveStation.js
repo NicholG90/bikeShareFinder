@@ -78,7 +78,11 @@ function SaveStation({ userStation, stationInformation }) {
             </div>)
     else
         return (
-            <Link to="/login" className='displayDataButton'>Login to Save</Link>
+            <div>
+                <button className='displayDataButton'>
+                    <Link to="/login" >Login to Save</Link>
+                </button>
+            </div>
         )
 }
 

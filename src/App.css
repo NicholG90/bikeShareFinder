@@ -205,6 +205,10 @@ p {
   text-align: center;
 }
 
+label {
+  color: var(--darkBlue);
+}
+
 /* Displaying Station Information Styling */
 
 .stationInformation {
