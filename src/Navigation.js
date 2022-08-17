@@ -7,6 +7,8 @@ import MapPage from "./MapPage"
 import Login from "./Login"
 import { logout } from "./firebase";
 import { AuthContext } from "./Auth";
+import { ReactComponent as CloseMenu } from "./assets/closeButton.svg";
+import { ReactComponent as OpenMenu } from "./assets/burgerBars.svg";
 
 function Navigation() {
     const { currentUser } = useContext(AuthContext);
@@ -31,6 +33,9 @@ function Navigation() {
             case "/saved":
                 setHeaderName("Saved Stations")
                 break
+            case "/login":
+                setHeaderName("Login")
+                break
             default: setHeaderName('')
         }
     }, [location])
@@ -38,31 +43,39 @@ function Navigation() {
 
     return (
         <div>
-            <nav className='headerNav'>
+            <nav className='headerNav '>
                 <div className='headerSection'>
                     <h1 className='pageTitle wrapper'>{headerName}</h1>
-                    <button className='burgerButton' onClick={handleClick}>{click ? 'Close' : 'Open'}</button>
+                    {/* <button className='burgerButton' onClick={handleClick}>{click ? 'Close' : 'Open'}</button> */}
+                    <div onClick={handleClick}>
+                        {click ? (
+                            <CloseMenu className='burgerButton'><p className='sr-only'>Close</p></CloseMenu>
+                        ) : (
+                            <OpenMenu className='burgerButton'><p className='sr-only'>Open</p></OpenMenu>
+                        )}
+                    </div>
                 </div>
-                <ul className={click ? 'sideNavActive' : 'sideNav'}>
-                    <li>
-                        <NavLink to="/" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Home</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/search" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Search Stations</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/map" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Map</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/saved" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Saved Stations</NavLink>
-                    </li>
-                    <li >
-                        {!!currentUser ?
-                            <button onClick={logout}>Sign Out</button> :
-                            <NavLink to="/login">Login</NavLink>}
-                    </li>
-
-                </ul>
+                <div className='wrapper'>
+                    <ul className={click ? 'sideNavActive' : 'sideNav'}>
+                        <li>
+                            <NavLink to="/" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Home</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/search" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Search Stations</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/map" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Map</NavLink>
+                        </li>
+                        {currentUser ? <li>
+                            <NavLink to="/saved" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Saved Stations</NavLink>
+                        </li> : null}
+                        <li >
+                            {currentUser ?
+                                <button onClick={logout} className>Sign Out</button> :
+                                <NavLink to="/login" onClick={closeMobileMenu}>Login</NavLink>}
+                        </li>
+                    </ul>
+                </div>
             </nav>
 
             <Routes>
@@ -71,7 +84,6 @@ function Navigation() {
                 <Route path="/map" element={<MapPage />} />
                 <Route path="/saved" element={<SavedStations />} />
                 <Route path="/login" element={<Login />} />
-
             </Routes>
         </div>
     )

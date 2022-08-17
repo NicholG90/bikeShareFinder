@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import { Navigate } from "react-router-dom";
 import { getDatabase, ref, onValue } from 'firebase/database';
 import firebase from './firebase';
 import DisplayStationData from "./DisplayStationData";
@@ -13,7 +14,6 @@ function SavedStations() {
     const [userStation, setUserStation] = useState();
 
     const { currentUser } = useContext(AuthContext)
-
 
     useEffect(() => {
         if (currentUser) {
@@ -45,12 +45,16 @@ function SavedStations() {
 
     }
 
+    if (currentUser === null) {
+        return <Navigate to="/login" replace />;
+    }
+
     return (
         <div className='mainContent'>
             <div className="stationAndRegionSelect">
-                <label>Select a Saved Station</label>
-                <Select onChange={handleChange} options={savedStationsList} styles={customStyles} />
-                {userStation ? <DisplayStationData userStation={userStation} stationInformation={userStation} /> : null}
+                {savedStationsList.length !== 0 ? <label>Select a Saved Station</label> : null}
+                {savedStationsList.length !== 0 ? <Select onChange={handleChange} options={savedStationsList} styles={customStyles} /> : <h2>Save Some Stations!</h2>}
+                {userStation && savedStationsList.length !== 0 ? <DisplayStationData userStation={userStation} stationInformation={userStation} /> : null}
             </div>
         </div>
     );

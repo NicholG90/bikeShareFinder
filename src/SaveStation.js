@@ -72,7 +72,7 @@ function SaveStation({ userStation, stationInformation }) {
 
     return (
         <div>
-            {savedExists ? <button onClick={(e) => handleRemove(e)}>Remove</button> : <button onClick={(e) => handleClick(e)}>Save this Station</button>}
+            {savedExists ? <button onClick={(e) => handleRemove(e)} className='displayDataButton'>Remove</button> : <button onClick={(e) => handleClick(e)} className='displayDataButton'>Save this Station</button>}
         </div>
     );
 }

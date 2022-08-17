@@ -1,9 +1,9 @@
 export const customStyles = {
     option: (provided, state) => ({
         ...provided,
-        border: '1px dashed #E9C46A',
-        color: state.isFocused ? '#E76F51' : '#264653',
-        backgroundColor: state.isFocused ? "#2A9D8F" : "white",
+        border: '1px dashed #66999B',
+        color: state.isFocused ? '#fc9520' : '#496A81',
+        backgroundColor: state.isFocused ? "#2B3A67" : "white",
         padding: 20,
     }),
     input: (provided) => ({
@@ -21,7 +21,7 @@ export const customStyles = {
     control: (provided, state) => ({
         ...provided,
         borderRadius: "50px",
-        border: state.isSelected ? '2px solid red' : '2px solid #2A9D8F',
+        border: state.isSelected ? '2px solid red' : '2px solid #2B3A67',
         margin: '25px 0'
     })
 

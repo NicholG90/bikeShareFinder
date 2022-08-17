@@ -5,7 +5,6 @@ const BikeAnimatedSVG = (props) => (
         y={0}
         x={0}
         xmlns="http://www.w3.org/2000/svg"
-        id="\u5716\u5C64_1"
         style={{
             height: "100%",
             width: "100%",
@@ -44,8 +43,8 @@ const BikeAnimatedSVG = (props) => (
                                 cy={61.7}
                                 cx={21.1}
                                 style={{
-                                    fill: "#264653",
-                                    stroke: "#e76f51",
+                                    fill: "#496A81",
+                                    stroke: "#fc9520",
                                 }}
                                 className="ldl-ani"
                             />
@@ -65,7 +64,7 @@ const BikeAnimatedSVG = (props) => (
                                 cy={61.7}
                                 cx={21.1}
                                 style={{
-                                    fill: "#2a9d8f",
+                                    fill: "#2B3A67",
                                 }}
                                 className="ldl-ani"
                             />
@@ -92,8 +91,8 @@ const BikeAnimatedSVG = (props) => (
                                 cy={61.7}
                                 cx={78.9}
                                 style={{
-                                    fill: "#264653",
-                                    stroke: "#e76f51",
+                                    fill: "#496A81",
+                                    stroke: "#fc9520",
                                 }}
                                 className="ldl-ani"
                             />
@@ -113,7 +112,7 @@ const BikeAnimatedSVG = (props) => (
                                 cy={61.7}
                                 cx={78.9}
                                 style={{
-                                    fill: "#2a9d8f",
+                                    fill: "#2B3A67",
                                 }}
                                 className="ldl-ani"
                             />
@@ -135,7 +134,7 @@ const BikeAnimatedSVG = (props) => (
                                 fill="#77a4bd"
                                 d="M80.3 61 63.7 24.1c-.3-.8-1.3-1.1-2-.8-.8.3-1.1 1.3-.8 2l6.3 14H37.5L35 33.7 32.2 35l2.8 6.2-14.2 18.4c-.5.7-.6 1.6-.2 2.3.4.8 1.1 1.2 2 1.2h23.3l1-.4 22.3-19.1 8.3 18.5c.3.6.8.9 1.4.9.2 0 .4 0 .6-.1.8-.2 1.2-1.1.8-1.9zM36.4 44.4l7.1 15.8H24.3l12.1-15.8zm10 14.8-7.5-16.7h27L46.4 59.2z"
                                 style={{
-                                    fill: "#2a9d8f",
+                                    fill: "#2B3A67",
                                 }}
                                 className="ldl-ani"
                             />
@@ -158,7 +157,7 @@ const BikeAnimatedSVG = (props) => (
                                 stroke="#c33737"
                                 fill="none"
                                 style={{
-                                    stroke: "#e76f51",
+                                    stroke: "#fc9520",
                                 }}
                                 className="ldl-ani"
                             />
@@ -181,8 +180,8 @@ const BikeAnimatedSVG = (props) => (
                                 cy={61}
                                 cx={45.5}
                                 style={{
-                                    fill: "#e9c46a",
-                                    stroke: "#2a9d8f",
+                                    fill: "#66999B",
+                                    stroke: "#2B3A67",
                                 }}
                                 className="ldl-ani"
                             />
@@ -205,7 +204,7 @@ const BikeAnimatedSVG = (props) => (
                                 stroke="#c33737"
                                 fill="none"
                                 style={{
-                                    stroke: "#e76f51",
+                                    stroke: "#fc9520",
                                 }}
                                 className="ldl-ani"
                             />

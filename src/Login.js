@@ -13,10 +13,12 @@ function Login() {
     }
 
     return (
-        <>
-            <button className="mainContent" onClick={signInWithGoogle}>Sign In</button>
-            <button className="mainContent" onClick={signInAnon}>Sign In Anon</button>
-        </>
+        <div className="mainContent">
+            <div className='loginButtons'>
+                <button className="googleButton" onClick={signInWithGoogle}>Sign in with Google</button>
+                <button className="anonButton" onClick={signInAnon}>Sign in Anonymously</button>
+            </div>
+        </div>
     )
 }
 

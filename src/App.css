@@ -1,11 +1,11 @@
 /* Variables */
 
 :root {
-  --darkGreen: #264653;
-  --lightGreen: #2A9D8F;
-  --yellow: #E9C46A;
-  --lightOrange: #F4A261;
-  --darkOrange: #E76F51;
+  --lightBlue: #496A81;
+  --darkBlue: #2B3A67;
+  --greyBlue: #66999B;
+  --grey: #B3AF8F;
+  --darkOrange: #fc9520;
   --lightGrey: #F1F2F3;
 
   --primaryFont: 'Montserrat'
@@ -15,7 +15,7 @@
 
 .wrapper {
   max-width: 1260px;
-  width: 90%;
+  max-width: 90%;
   margin: 0 auto;
 }
 
@@ -92,8 +92,8 @@ p {
 }
 
 .directionsSection {
-  background-color: var(--lightGreen);
-  color: var(--lightOrange);
+  background-color: var(--darkBlue);
+  color: var(--grey);
   height: 75px;
   padding: 15px;
   position: relative;
@@ -109,8 +109,7 @@ p {
   position: fixed;
   z-index: 1;
   top: 0;
-  /* left: 0; */
-  background-color: var(--lightGreen);
+  background-color: var(--darkBlue);
   overflow-x: hidden;
   transition: 0.25s;
   display: flex;
@@ -118,28 +117,27 @@ p {
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-
 }
 
 .sideNav>li {
-  color: var(--lightOrange);
+  color: var(--grey);
   font-size: 2rem;
   transition: 0.25s;
+}
+
+.sideNav>li>button {
+  color: var(--grey);
+  font-size: 2rem;
+  transition: 0.25s;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .active {
   color: var(--darkOrange);
 
 }
-
-/* .sideNav>li:hover,
-:focus {
-  color: var(--darkOrange);
-  font-size: 2rem;
-  transition: 0.25s;
-} */
-
-
 
 .pageTitle {
   display: none;
@@ -148,9 +146,12 @@ p {
 .burgerButton {
   position: absolute;
   right: 20px;
-  top: 15px;
-  z-index: 2;
+  top: 37.5px;
+  z-index: 15;
   opacity: 0;
+  height: 25px;
+  cursor: pointer;
+  fill: var(--grey)
 }
 
 /* MainContent Styles */
@@ -181,17 +182,34 @@ p {
   justify-content: space-between;
   height: fit-content;
   width: fit-content;
-  background-color: var(--lightGreen);
+  background-color: var(--darkBlue);
   border: 2px var(--darkOrange) solid;
   border-radius: 15px;
   padding: 20px 20px;
   margin: 0 auto;
   margin-top: 25px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  color: var(--darkOrange);
 }
 
 .stationInformation>* {
   padding: 15px 0;
+}
+
+.displayDataButton {
+  background-color: var(--darkOrange);
+  border: 2px solid var(--lightBlue);
+  padding: 15px;
+  color: var(--lightGrey);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.displayDataButton:hover {
+  background-color: var(--lightGrey);
+  color: var(--darkOrange);
+  transition: 0.25s;
 }
 
 .mapModal {
@@ -206,7 +224,58 @@ p {
   width: 100vw;
   height: 100vh;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.closeMap {
+  position: absolute;
+  top: 5vh;
+  left: 85vw;
+  height: 50px;
+  cursor: pointer;
+  z-index: 3;
+  fill: var(--darkOrange)
+}
+
+/* Login Styling */
+
+.loginButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.googleButton {
+  padding: 12px 16px 12px 42px;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+  color: #757575;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: 12px 11px;
+  width: 220px;
+}
+
+/* Google Login CSS Credtit = https: //codepen.io/mupkoo/pen/YgddgB */
+
+.anonButton {
+  padding: 12px 16px 12px 16px;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+  color: #757575;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: 12px 11px;
+  width: 220px;
 }
 
 @media (max-width:900px) {
@@ -233,9 +302,9 @@ p {
     height: 100%;
     width: 100%;
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     top: 0;
-    background-color: var(--lightGreen);
+    background-color: var(--darkBlue);
     overflow-x: hidden;
     transition: 0.25s;
     display: flex;
@@ -247,7 +316,7 @@ p {
   }
 
   .sideNavActive>li {
-    color: var(--lightOrange);
+    color: var(--grey);
     font-size: 2rem;
     transition: 0.25s;
   }
@@ -264,6 +333,7 @@ p {
     align-items: center;
     text-align: center;
     color: var(--darkOrange);
+    height: 100px;
   }
 
 
@@ -276,7 +346,7 @@ p {
   }
 
   .headerSection {
-    background-color: var(--lightGreen);
+    background-color: var(--darkBlue);
   }
 
 }
