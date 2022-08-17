@@ -74,7 +74,7 @@ function Navigation() {
                                 <NavLink to="/login" onClick={closeMobileMenu}>Login</NavLink>}
                         </li>
                         <li >
-                            <p className='junoCredit'>Made with ❤️ at Juno College</p>
+                            <p className='junoCredit'>Made with ❤️ by <a href="https://portfolio.gourlay.me" target="_blank" rel="noopener noreferrer">Nick</a> at <a href="https://junocollege.com/" target="_blank" rel="noopener noreferrer">Juno</a></p>
                         </li>
                     </ul>
                 </div>
