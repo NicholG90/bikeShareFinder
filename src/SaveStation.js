@@ -2,6 +2,8 @@ import firebase from './firebase';
 import { getDatabase, ref, update, onValue, remove } from 'firebase/database';
 import { useState, useEffect, useContext } from "react"
 import { AuthContext } from "./Auth"
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -69,12 +71,15 @@ function SaveStation({ userStation, stationInformation }) {
     }
 
 
-
-    return (
-        <div>
-            {savedExists ? <button onClick={(e) => handleRemove(e)} className='displayDataButton'>Remove</button> : <button onClick={(e) => handleClick(e)} className='displayDataButton'>Save this Station</button>}
-        </div>
-    );
+    if (currentUser)
+        return (
+            <div>
+                {savedExists ? <button onClick={(e) => handleRemove(e)} className='displayDataButton'>Remove</button> : <button onClick={(e) => handleClick(e)} className='displayDataButton'>Save this Station</button>}
+            </div>)
+    else
+        return (
+            <Link to="/login" className='displayDataButton'>Login to Save</Link>
+        )
 }
 
 export default SaveStation

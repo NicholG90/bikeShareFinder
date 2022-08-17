@@ -162,10 +162,23 @@ p {
   fill: var(--grey)
 }
 
+/* Home Page Styling */
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-height: calc(100vh - 100px)
+}
+
+
+
 /* MainContent Styles */
 
 .mainContent {
-  margin-left: 250px;
+  margin-left: calc(5vw + 250px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -295,7 +308,7 @@ p {
   }
 
   .mainContent {
-    margin-left: 200px;
+    margin-left: calc(5vw + 200px);
   }
 
   .junoCredit {
@@ -366,5 +379,9 @@ p {
   .junoCredit {
     width: 100%;
   }
+
+    .introDescription {
+      margin-top: 100px
+    }
 
 }
