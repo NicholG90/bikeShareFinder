@@ -139,6 +139,14 @@ p {
 
 }
 
+.junoCredit {
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: 0;
+  width: 250px;
+  left: 0;
+}
+
 .pageTitle {
   display: none;
 }
@@ -290,6 +298,10 @@ p {
     margin-left: 200px;
   }
 
+  .junoCredit {
+    width: 200px;
+  }
+
 
 }
 
@@ -349,6 +361,10 @@ p {
 
   .headerSection {
     background-color: var(--darkBlue);
+  }
+
+  .junoCredit {
+    width: 100%;
   }
 
 }

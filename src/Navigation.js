@@ -73,6 +73,9 @@ function Navigation() {
                                 <button onClick={logout} className>Sign Out</button> :
                                 <NavLink to="/login" onClick={closeMobileMenu}>Login</NavLink>}
                         </li>
+                        <li >
+                            <p className='junoCredit'>Made with ❤️ at Juno College</p>
+                        </li>
                     </ul>
                 </div>
             </nav>
