@@ -22,10 +22,10 @@ function Navigation() {
     useEffect(() => {
         switch (location.pathname) {
             case "/":
-                setHeaderName("Home")
+                setHeaderName("Bike Share Finder")
                 break
             case "/search":
-                setHeaderName("Search Stations")
+                setHeaderName("Search")
                 break
             case "/map":
                 setHeaderName("Map Stations")
@@ -46,7 +46,6 @@ function Navigation() {
             <nav className='headerNav '>
                 <div className='headerSection'>
                     <h1 className='pageTitle wrapper'>{headerName}</h1>
-                    {/* <button className='burgerButton' onClick={handleClick}>{click ? 'Close' : 'Open'}</button> */}
                     <div onClick={handleClick}>
                         {click ? (
                             <CloseMenu className='burgerButton'><p className='sr-only'>Close</p></CloseMenu>
@@ -61,7 +60,7 @@ function Navigation() {
                             <NavLink to="/" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Home</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/search" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Search Stations</NavLink>
+                            <NavLink to="/search" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Search</NavLink>
                         </li>
                         <li>
                             <NavLink to="/map" onClick={closeMobileMenu} className={(navData) => (navData.isActive ? 'active' : undefined)}>Map</NavLink>
