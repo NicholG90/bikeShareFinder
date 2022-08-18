@@ -103,7 +103,6 @@ p {
   z-index: 1;
   top: 0;
   background-color: var(--darkBlue);
-  overflow-x: hidden;
   transition: 0.25s;
   display: flex;
   flex-direction: column;
@@ -353,7 +352,6 @@ label {
     z-index: 10;
     top: 0;
     background-color: var(--darkBlue);
-    overflow-x: hidden;
     transition: 0.25s;
     display: flex;
     flex-direction: column;
