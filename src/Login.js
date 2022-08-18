@@ -13,7 +13,9 @@ function Login() {
     }
 
     return (
-        <div className="mainContent">
+        <div className="mainContent loginContent">
+            <p>Login below to save your favourite bike share stations.</p>.
+            <p>Signing in Anonymously is a one time login.</p>
             <div className='loginButtons'>
                 <button className="googleButton" onClick={signInWithGoogle}>Sign in with Google</button>
                 <button className="anonButton" onClick={signInAnon}>Sign in Anonymously</button>
