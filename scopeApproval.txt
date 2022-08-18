@@ -1,0 +1,53 @@
+API
+
+https://api.citybik.es/v2/networks/
+https://api.citybik.es/v2/networks/bixi-toronto
+
+
+MVP (Minimum Viable Product) Goals
+- Load list of bike share services from API
+- Have user select from list of bike share services provided by API
+- Load Stations from specific API for regional bike share
+- Have user select specific station from list
+- Display information about station: Empty Slots, Free Bikes
+
+
+Strech Goals
+- Kick out to map with lat/long of specific station in Google Maps
+- Allow user to store and selectfavourite stations in Firebase
+- Filter Stations/Services by typed search
+- Show other close stations (map data)
+
+
+PseudoCode
+
+*** Initial API Call ***
+Perform initial API call to citybik.es to get list of regional bike share services
+Store this list as state (apiRegionData)
+Pass this list to Region/SErvice Select Component as props
+If API Call unsuccessful, display error message to page
+
+*** Render Initial Application Load ***
+- Header
+- Region Service Select
+- Footer
+
+*** Region/Service Select Component ***
+Receives data from stored state (apiRegionData) to select component to populate
+Store user selection in state (regionSelect) using a local method (handleChange)
+Pass regionSelect to Station API Call Compoenent as props
+
+*** Station API Call Component ***
+Use passed state to query citybik.es API for data in specific region
+Store returned items in state (stationList)
+If API Call unsuccessful, display error message to page
+Render Addional Select Component to Page
+
+*** Station Select Compoenent ***
+Pass stationList data to same select compoenent (rendeered again) to display list of available stations as props
+Store user selected station in state (stationSelect) using a local method (handleChange)
+Pass stationSelect to Display Station Information Component as props
+
+*** Display Station Information Componenent ***
+Create component to display information about user selected station
+This component receives data as props and renders the specific parameters to the page.
