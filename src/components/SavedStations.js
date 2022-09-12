@@ -1,11 +1,11 @@
 import { useEffect, useState, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { getDatabase, ref, onValue } from 'firebase/database';
-import firebase from './firebase';
+import firebase from '../helpers/firebase';
 import DisplayStationData from "./DisplayStationData";
 import axios from 'axios';
 import Select from 'react-select'
-import { customStyles } from './selectStyling';
+import { customStyles } from '../helpers/selectStyling';
 import { AuthContext } from "./Auth";
 
 

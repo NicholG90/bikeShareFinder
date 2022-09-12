@@ -11,6 +11,8 @@ function Search() {
     const [userRegion, setUserRegion] = useState();
     const [stationInformation, setStationInformation] = useState();
     const [userStation, setUserStation] = useState();
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         axios({
@@ -19,6 +21,9 @@ function Search() {
         }).then((response) => {
             setRegions(response.data.networks);
         });
+        setTimeout(() => {
+            setLoading(false)
+        }, 750)
     }, []);
 
 
@@ -47,7 +52,7 @@ function Search() {
 
     return (
         <div className='mainContent'>
-            {regions ? <RegionSelect data={regions} regionSelect={regionSelect} /> : <BikeAnimatedSVG />}
+            {!loading && regions ? <RegionSelect data={regions} regionSelect={regionSelect} /> : <BikeAnimatedSVG />}
             {stationInformation ? <StationSelect data={stationInformation} stationSelect={stationSelect} /> : null}
             {userStation ? <DisplayStationData userStation={userStation} stationInformation={stationInformation} /> : null}
         </div>

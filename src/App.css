@@ -195,6 +195,12 @@ p {
   height: 100vh;
 }
 
+/* Loading Styling */
+
+.loadingTitle {
+  text-align: center;
+}
+
 /* Search Bar Styling */
 
 .stationAndRegionSelect {
