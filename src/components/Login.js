@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { signInWithGoogle, signInAnon } from "./firebase";
+import { signInWithGoogle, signInAnon } from "../helpers/firebase";
 import { AuthContext } from "./Auth.js";
 import { Navigate } from 'react-router-dom';
 

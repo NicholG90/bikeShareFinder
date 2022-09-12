@@ -1,5 +1,5 @@
 import Select from 'react-select'
-import { customStyles } from './selectStyling';
+import { customStyles } from '../helpers/selectStyling';
 
 function RegionSelect({ data, regionSelect }) {
 

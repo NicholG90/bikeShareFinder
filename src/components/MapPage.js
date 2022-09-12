@@ -9,6 +9,7 @@ function MapPage() {
 
     const [regions, setRegions] = useState();
     const [userRegion, setUserRegion] = useState();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios({
@@ -17,6 +18,9 @@ function MapPage() {
         }).then((response) => {
             setRegions(response.data.networks);
         });
+        setTimeout(() => {
+            setLoading(false)
+        }, 750)
     }, []);
 
     const regionSelect = (selected) => {
@@ -30,7 +34,7 @@ function MapPage() {
 
     return (
         <div className='mainContent'>
-            {regions ? <RegionSelect data={regions} regionSelect={regionSelect} /> : <BikeAnimatedSVG />}
+            {!loading && regions ? <RegionSelect data={regions} regionSelect={regionSelect} /> : <BikeAnimatedSVG />}
             {userRegion ? <MapSearch data={userRegion.href} /> : null}
         </div>
     )

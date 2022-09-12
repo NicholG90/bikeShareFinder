@@ -5,10 +5,10 @@ import SavedStations from './SavedStations';
 import Search from './Search';
 import MapPage from "./MapPage"
 import Login from "./Login"
-import { logout } from "./firebase";
+import { logout } from "../helpers/firebase";
 import { AuthContext } from "./Auth";
-import { ReactComponent as CloseMenu } from "./assets/closeButton.svg";
-import { ReactComponent as OpenMenu } from "./assets/burgerBars.svg";
+import { ReactComponent as CloseMenu } from "../assets/closeButton.svg";
+import { ReactComponent as OpenMenu } from "../assets/burgerBars.svg";
 
 function Navigation() {
     const { currentUser } = useContext(AuthContext);

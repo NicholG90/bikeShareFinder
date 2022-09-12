@@ -64,7 +64,7 @@ function MapSearch(url) {
         >
             <MarkerClusterer minimumClusterSize={5}>
                 {(clusterer) =>
-                    stationGeo.map(({ position, stationName, emptySlots, freeBikes, href, id, key }) => (
+                    stationGeo.map(({ position, stationName, emptySlots, freeBikes, href, id }) => (
                         <>
                             <MarkerF
                                 key={`marker-${position.lng}`}

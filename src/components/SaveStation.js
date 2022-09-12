@@ -1,4 +1,4 @@
-import firebase from './firebase';
+import firebase from '../helpers/firebase';
 import { getDatabase, ref, update, onValue, remove } from 'firebase/database';
 import { useState, useEffect, useContext } from "react"
 import { AuthContext } from "./Auth"

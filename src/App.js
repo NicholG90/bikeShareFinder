@@ -1,6 +1,6 @@
 import './App.css';
-import Navigation from './Navigation';
-import { AuthProvider } from './Auth';
+import Navigation from './components/Navigation';
+import { AuthProvider } from './components/Auth';
 
 
 function App() {

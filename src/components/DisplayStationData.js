@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import MapResult from './MapResult';
 import SaveStation from "./SaveStation";
-import { ReactComponent as CloseMenu } from "./assets/closeButton.svg";
+import { ReactComponent as CloseMenu } from "../assets/closeButton.svg";
 
 
 function DisplayStationData({ userStation, stationInformation }) {
@@ -39,7 +39,6 @@ function DisplayStationData({ userStation, stationInformation }) {
             </div>
             {mapViewable ?
                 <div className='mapModal'>
-                    {/* <button onClick={() => { setMapViewable(false) }}>Close Map</button> */}
                     <CloseMenu className='closeMap' onClick={() => { setMapViewable(false) }}><p className='sr-only'>Close Map</p></CloseMenu>
                     <MapResult geolocation={geolocation} />
                 </div> : null}
